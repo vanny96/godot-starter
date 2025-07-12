@@ -3,7 +3,7 @@ name: Deploy Game
 on:
   push:
     tags:
-      - '*'
+      - 'release-*'
   workflow_dispatch: {}
 
 jobs:
