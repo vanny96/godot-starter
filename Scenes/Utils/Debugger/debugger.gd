@@ -1,7 +1,7 @@
 extends Node
 
+@export var debug_info_panel: Container
 @onready var debug_info: Dictionary[String, Label] = {}
-@onready var debug_info_panel: Container = $CanvasLayer/DebugInfo
 @onready var debug_info_font: FontFile = preload("res://Scenes/Utils/Debugger/debugger-font.ttf")
 
 func _ready() -> void:
@@ -10,6 +10,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reload_scene"):
 		SceneManager.reload_current_scene()
+	
+	set_debug_info("FPS", Performance.get_monitor(Performance.TIME_FPS))
 
 func _setup_debug_info() -> void:
 	if OS.is_debug_build():
@@ -26,7 +28,7 @@ func reset_debug_info() -> void:
 func _load_debug_base_info() -> void:
 	set_debug_info("Scene Name", get_tree().current_scene.scene_file_path)
 
-func set_debug_info(name: String, value: String) -> void:
+func set_debug_info(name: String, value: Variant) -> void:
 	await Engine.get_main_loop().process_frame
 	var label: Label = debug_info.get(name, Label.new())
 	label.text = "%-15s %s" % [name + ":", value]
