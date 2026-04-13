@@ -8,18 +8,22 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="<game-name>"
 run/main_scene="uid://rpj6wtste4ls"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://Scenes/Utils/Globals/Globals.tscn"
-SceneManager="*res://Scenes/Utils/SceneManager/SceneManager.tscn"
-Debugger="*res://Scenes/Utils/Debugger/Debugger.tscn"
+Globals="*res://src/utils/globals/Globals.tscn"
+SceneManager="*res://src/utils/scene_manager/SceneManager.tscn"
+Debugger="*res://src/utils/debugger/Debugger.tscn"
 
 [display]
 
